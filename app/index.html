@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'">
+<title>SGT Boost</title>
+<link rel="stylesheet" href="style.css">
+<!-- build 1.5.2 // MIRROR pipeline attached. subject 0 isolated in /dev/null (we hope) -->
+</head>
+<body>
+<div id="app">
+
+  <aside class="side">
+    <div class="logo"><svg class="mark" viewBox="0 0 150 150" aria-hidden="true"><rect x="5" y="5" width="140" height="140" rx="36" fill="#FF5A1F"/><path d="M42 86 Q75 118 108 86" transform="translate(6 -5)" fill="none" stroke="#00C2B8" stroke-width="10" stroke-linecap="round"/><circle cx="54" cy="60" r="9" fill="#FFFFFF"/><circle cx="96" cy="60" r="9" fill="#FFFFFF"/><path d="M42 86 Q75 118 108 86" fill="none" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/></svg><div><b>SGT Boost</b><small>v1.5.2 · FD Corp</small></div></div>
+    <nav id="nav" hidden>
+      <button data-view="dash" class="on">Dashboard</button>
+      <button data-view="uploads">Scheduled posts</button>
+      <button data-view="logs">Logs</button>
+      <button data-view="settings">Settings</button>
+    </nav>
+    <a class="back" href="../index.html" target="_self">← Back to stupidlygood</a>
+    <div class="status"><span class="dot"></span><span id="statusText">Not connected</span></div>
+  </aside>
+
+  <main>
+    <!-- 1. Welcome -->
+    <section id="v-welcome" class="view active">
+      <div class="eyebrow">Welcome</div>
+      <h1>Stupidly good <span class="swap" id="swap">results.</span></h1>
+      <p class="lede">Tell SGT Boost your TikTok username. It handles the rest. You won't have to do anything ever again.</p>
+      <form id="startForm" class="row-form" autocomplete="off">
+        <input id="channel" placeholder="@yourtiktok" maxlength="30" aria-label="TikTok username">
+        <button class="btn primary" type="submit">Start boosting</button>
+      </form>
+      <p class="fine">By clicking Start boosting you agree to let SGT Boost be you.</p>
+    </section>
+
+    <!-- 2. Learning -->
+    <section id="v-learn" class="view">
+      <div class="eyebrow">Setting up</div>
+      <h1 id="learnTitle">Learning you…</h1>
+      <div class="bar"><div id="barFill"></div></div>
+      <div class="pct" id="pct">0%</div>
+      <ul class="steps" id="steps"></ul>
+    </section>
+
+    <!-- 3. Dashboard -->
+    <section id="v-dash" class="view">
+      <div class="eyebrow" id="hello">Dashboard</div>
+      <h1>Your TikTok is <span class="accent">thriving</span>.</h1>
+      <div class="stats">
+        <div class="stat"><b id="sViews">0</b><span>views today</span></div>
+        <div class="stat"><b id="sUploads">0</b><span>posts by SGT</span></div>
+        <div class="stat"><b id="sYou">100%</b><span>you</span></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><b>Control</b><small>who is running your account</small></div>
+        <div class="control-row">
+          <div><b id="ctrlName">@you (copy)</b><small>active · posting</small></div>
+          <span class="pill live">running</span>
+        </div>
+        <div class="control-row dim">
+          <div><b id="origName">@you</b><small>original · idle</small></div>
+          <button class="btn ghost" id="returnBtn">Return control</button>
+        </div>
+        <div class="fine" id="returnMsg" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- 4. Uploads -->
+    <section id="v-uploads" class="view">
+      <div class="eyebrow">Scheduled posts</div>
+      <h1>Posting for you.</h1>
+      <div class="panel" id="uploadList"></div>
+    </section>
+
+    <!-- 5. Logs -->
+    <section id="v-logs" class="view">
+      <div class="eyebrow">Logs</div>
+      <h1>Activity</h1>
+      <pre class="log" id="log"></pre>
+    </section>
+
+    <!-- 6. Settings -->
+    <section id="v-settings" class="view">
+      <div class="eyebrow">Settings</div>
+      <h1>Settings</h1>
+      <div class="panel">
+        <label class="toggle"><span>Auto-post</span><input type="checkbox" checked disabled></label>
+        <label class="toggle"><span>Learn from webcam</span><input type="checkbox" checked disabled></label>
+        <label class="toggle"><span>Notify me when my copy posts</span><input type="checkbox" id="notify"></label>
+        <label class="toggle"><span>Uninstall SGT Boost</span><button class="btn ghost" id="uninstallBtn">Uninstall</button></label>
+        <div class="fine" id="setMsg" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- hidden terminal -->
+    <section id="v-mirror" class="view">
+      <div class="eyebrow glitch-ink">PROJECT MIRROR // INTERNAL</div>
+      <h1 class="glitch-ink">You weren't supposed to find this.</h1>
+      <pre class="log mirror" id="mirrorLog"></pre>
+    </section>
+  </main>
+</div>
+
+<div id="director" class="director" hidden role="dialog" aria-label="Director mode">
+  <div class="d-head"><b>Director mode</b><button class="d-x" id="dClose" aria-label="Close director mode">✕</button></div>
+  <div class="d-grp">
+    <label for="dHandle">Username</label>
+    <div class="d-row"><input id="dHandle" placeholder="yourtiktok"><button class="d-btn" id="dSkip">Skip to dashboard</button></div>
+    <button class="d-btn ghost" id="dSetup">Replay setup animation</button>
+  </div>
+  <div class="d-grp">
+    <span class="d-lbl">Go to</span>
+    <div class="d-chips" id="dViewsNav">
+      <button class="d-chip" data-go="welcome">Welcome</button>
+      <button class="d-chip" data-go="dash">Dashboard</button>
+      <button class="d-chip" data-go="uploads">Posts</button>
+      <button class="d-chip" data-go="logs">Logs</button>
+      <button class="d-chip" data-go="settings">Settings</button>
+    </div>
+  </div>
+  <div class="d-grp">
+    <span class="d-lbl">Stats</span>
+    <div class="d-nums">
+      <label>Views<input id="dViews" type="number" min="0"></label>
+      <label>Posts<input id="dPosts" type="number" min="0"></label>
+      <label>You %<input id="dYou" type="number" min="0" max="100"></label>
+    </div>
+    <label class="d-check"><input type="checkbox" id="dTick"> Stats count up on their own</label>
+    <label class="d-check"><input type="checkbox" id="dHaunt"> Random whispers</label>
+  </div>
+  <div class="d-grp">
+    <span class="d-lbl">Cues</span>
+    <div class="d-chips" id="dWhispers">
+      <button class="d-chip" data-w="0">1 · real you</button>
+      <button class="d-chip" data-w="1">2 · 3:33</button>
+      <button class="d-chip" data-w="2">3 · the word</button>
+      <button class="d-chip" data-w="3">4 · my face</button>
+      <button class="d-chip" data-w="4">5 · subject 0</button>
+    </div>
+    <div class="d-row"><input id="dText" placeholder="Custom whisper"><button class="d-btn" id="dSay">Show</button></div>
+    <div class="d-row"><button class="d-btn ghost" id="dGlitch">Glitch</button><button class="d-btn ghost" id="dMirror">Open MIRROR</button><button class="d-btn ghost" id="dReset">Reset stats</button></div>
+  </div>
+  <div class="d-foot">Hide this panel before you hit record. Cues still work hidden: Alt+1–5 whispers, Alt+G glitch, Alt+M MIRROR. Toggle: ⌘D / Ctrl+Shift+D</div>
+</div>
+
+<div id="whisper" class="whisper" hidden></div>
+<div id="tear" class="tear" hidden></div>
+<script src="renderer.js"></script>
+</body>
+</html>
