@@ -1,4 +1,4 @@
-SGT BOOST 1.5.3
+SGT BOOST 1.5.4
 Stupidly Good Technologies, an FD Corp company
 
 Stupidly good results. No questions asked.

@@ -1,4 +1,4 @@
-// SGT Boost 1.5.3
+// SGT Boost 1.5.4
 // It makes no network requests, reads no files and changes nothing on your computer.
 const { app, BrowserWindow, Menu, dialog, shell } = require('electron');
 const path = require('path');
@@ -38,7 +38,7 @@ function buildMenu() {
         click: () => dialog.showMessageBox({
           type: 'info',
           title: 'About SGT Boost',
-          message: 'SGT Boost 1.5.3\nStupidly Good Technologies, an FD Corp company',
+          message: 'SGT Boost 1.5.4\nStupidly Good Technologies, an FD Corp company',
           detail: 'Stupidly good results. No questions asked.\n\n(This app is part of a story. It stays offline, leaves your files alone, and quits like any normal app.)'
         })
       }]
