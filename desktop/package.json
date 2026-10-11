@@ -1,8 +1,8 @@
 {
   "name": "sgt-boost",
   "productName": "SGT Boost",
-  "version": "1.5.2",
-  "description": "SGT Boost by Stupidly Good Technologies (fictional ARG prop app)",
+  "version": "1.5.3",
+  "description": "SGT Boost by Stupidly Good Technologies",
   "main": "main.js",
   "author": "Stupidly Good Technologies (FD Corp)",
   "license": "UNLICENSED",
@@ -36,7 +36,8 @@
       ],
       "category": "Utility",
       "icon": "build/icon.png",
-      "artifactName": "SGT-Boost-linux.${ext}"
+      "artifactName": "SGT-Boost-linux.${ext}",
+      "executableName": "sgt-boost"
     },
     "win": {
       "target": [

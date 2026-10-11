@@ -37,7 +37,7 @@ jobs:
           target_commitish: ${{ github.sha }}
           make_latest: true
           name: SGT Boost ${{ steps.v.outputs.version }}
-          body: "Stupidly good results. No questions asked.\n\n(Fictional ARG prop app: offline, doesn't touch your files, closes like a normal app.)"
+          body: "Stupidly good results. No questions asked."
           files: |
             desktop/dist/SGT-Boost-linux.AppImage
             desktop/dist/SGT-Boost-windows-setup.exe

@@ -1,4 +1,4 @@
-// SGT Boost — fictional prop app for an ARG.
+// SGT Boost 1.5.3
 // It makes no network requests, reads no files and changes nothing on your computer.
 const { app, BrowserWindow, Menu, dialog, shell } = require('electron');
 const path = require('path');
@@ -11,6 +11,7 @@ function createWindow() {
     minHeight: 520,
     backgroundColor: '#0E1217',
     title: 'SGT Boost',
+    icon: path.join(__dirname, 'app', 'icon.png'),
     autoHideMenuBar: true,
     webPreferences: {
       contextIsolation: true,
@@ -37,8 +38,8 @@ function buildMenu() {
         click: () => dialog.showMessageBox({
           type: 'info',
           title: 'About SGT Boost',
-          message: 'SGT Boost 1.5.2\nStupidly Good Technologies, an FD Corp company',
-          detail: 'Stupidly Good Technologies and FD Corp are fictional. This app is a prop from an ARG.\n\nIt does not connect to the internet, does not touch your files, and quits like any normal app. Delete it whenever you want.'
+          message: 'SGT Boost 1.5.3\nStupidly Good Technologies, an FD Corp company',
+          detail: 'Stupidly good results. No questions asked.\n\n(This app is part of a story. It stays offline, leaves your files alone, and quits like any normal app.)'
         })
       }]
     }
