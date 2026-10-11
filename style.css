@@ -89,3 +89,7 @@ footer{padding-block:40px 60px;border-top:1px solid var(--line);display:grid;gap
 .ghosttext{color:var(--bg);user-select:all;font-family:var(--mono);font-size:12px}
 @media (max-width:560px){.stats{grid-template-columns:1fr}.row{grid-template-columns:70px minmax(0,1fr)}}
 @media (prefers-reduced-motion:reduce){h1 .swap.glitching{animation:none}}
+
+.gurt{justify-self:start;display:inline-block;line-height:0}
+.gurt img{display:block;height:auto}
+.gurt:focus-visible{outline:3px solid var(--glitch);outline-offset:2px}
