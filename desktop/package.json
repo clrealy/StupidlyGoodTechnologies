@@ -1,0 +1,68 @@
+{
+  "name": "sgt-boost",
+  "productName": "SGT Boost",
+  "version": "1.5.2",
+  "description": "SGT Boost by Stupidly Good Technologies (fictional ARG prop app)",
+  "main": "main.js",
+  "author": "Stupidly Good Technologies (FD Corp)",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
+  },
+  "devDependencies": {
+    "electron": "37.10.3",
+    "electron-builder": "26.0.12"
+  },
+  "build": {
+    "appId": "tech.stupidlygood.boost",
+    "productName": "SGT Boost",
+    "publish": null,
+    "files": [
+      "main.js",
+      "app/**/*"
+    ],
+    "extraFiles": [
+      {
+        "from": "README.txt",
+        "to": "README.txt"
+      }
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Utility",
+      "icon": "build/icon.png",
+      "artifactName": "SGT-Boost-linux.${ext}"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "build/icon.png",
+      "signAndEditExecutable": false
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "icon": "build/icon.png",
+      "category": "public.app-category.utilities",
+      "artifactName": "SGT-Boost-mac.${ext}",
+      "identity": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "SGT-Boost-windows-setup.${ext}"
+    }
+  }
+}
